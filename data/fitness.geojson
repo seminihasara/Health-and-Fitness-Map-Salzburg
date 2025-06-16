@@ -1,0 +1,307 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2025-06-10T21:56:57Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/175990115",
+        "blind": "limited",
+        "fitness_station": "fitness_station",
+        "leisure": "fitness_station",
+        "sport": "fitness",
+        "surface": "asphalt",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+              13.034125,
+              47.7877157
+        ]
+      },
+      "id": "way/175990115"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/386466310",
+        "leisure": "fitness_station",
+        "name": "fit im Volksgarten",
+        "sport": "fitness",
+        "type": "several fitness tools"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          
+              13.0605287,
+              47.7968415
+        ]
+      },
+      "id": "way/386466310"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/991536275",
+        "leisure": "pitch",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          
+              12.995182,
+              47.8162558
+        ]
+      },
+      "id": "way/991536275"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1200827440",
+        "leisure": "fitness_station",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          
+            
+              13.0851201,
+              47.7821669
+            
+        ]
+      },
+      "id": "way/1200827440"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1217485116",
+        "leisure": "fitness_station",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          
+              13.0232614,
+              47.8314894
+           
+        ]
+      },
+      "id": "way/1217485116"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3329746877",
+        "leisure": "sports_centre",
+        "name": "Dhyana Fitness",
+        "sport": "fitness",
+        "website": "http://www.dhyana-fitness.at"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0528239,
+          47.7850239
+        ]
+      },
+      "id": "node/3329746877"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4276956912",
+        "leisure": "fitness_station",
+        "name": "MANDU",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0229155,
+          47.8052602
+        ]
+      },
+      "id": "node/4276956912"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4429366945",
+        "addr:city": "Salzburg",
+        "addr:housenumber": "3",
+        "addr:postcode": "5020",
+        "addr:street": "Otto-Holzbauer-Straße",
+        "leisure": "sports_centre",
+        "level": "1",
+        "name": "USI Fitnesszentrum (UFZ)",
+        "sport": "fitness",
+        "website": "http://sportwissenschaft.uni-salzburg.at/usi/de/home/sportstaetten/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0671786,
+          47.7773796
+        ]
+      },
+      "id": "node/4429366945"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5373673080",
+        "check_date": "2023-09-04",
+        "fitness_station": "yes",
+        "leisure": "fitness_station",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0376027,
+          47.8039333
+        ]
+      },
+      "id": "node/5373673080"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5665915789",
+        "leisure": "fitness_station",
+        "name": "Fitnessgeräte Outdoor",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0208621,
+          47.7904745
+        ]
+      },
+      "id": "node/5665915789"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6365515756",
+        "fitness_station": "slackline",
+        "leisure": "fitness_station",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0308366,
+          47.8217007
+        ]
+      },
+      "id": "node/6365515756"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7101780271",
+        "leisure": "fitness_centre",
+        "name": "Maikai Mitte",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0303956,
+          47.8091542
+        ]
+      },
+      "id": "node/7101780271"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8628780636",
+        "fitness_station": "yes",
+        "leisure": "fitness_station",
+        "sport": "fitness",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0645591,
+          47.7779275
+        ]
+      },
+      "id": "node/8628780636"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11255015414",
+        "leisure": "fitness_station",
+        "sport": "fitness",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0319351,
+          47.8213293
+        ]
+      },
+      "id": "node/11255015414"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11656233169",
+        "fitness_station": "yes",
+        "leisure": "fitness_station",
+        "sport": "fitness",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0227377,
+          47.8110577
+        ]
+      },
+      "id": "node/11656233169"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11722177135",
+        "addr:city": "Salzburg",
+        "addr:country": "AT",
+        "addr:housenumber": "31",
+        "addr:postcode": "5020",
+        "addr:street": "Teisenberggasse",
+        "at_bev:addr_date": "2023-10-01",
+        "contact:email": "office@hieronymusfitness.net",
+        "contact:phone": "+43 662 665980",
+        "contact:website": "http://hieronymusfitness.net/",
+        "name": "Hieronymus",
+        "shop": "sports",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          13.0086842,
+          47.803472
+        ]
+      },
+      "id": "node/11722177135"
+    }
+  ]
+}
