@@ -38,31 +38,56 @@ L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 //
 
 
+// Add Park layer to the Map
 
+// Highlight function
+// Highlight function
+function highlightFeature(e) {
+    var layer = e.target;
+    layer.setStyle({
+        color: '#228B22',  // Darker green on hover
+        weight: 5,
+        fillOpacity: 0.7
+    });
 
+    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+        layer.bringToFront();
+    }
+}
+
+// Reset highlight
+function resetHighlight(e) {
+    Park.resetStyle(e.target);
+}
+
+// Zoom on click
 function zoomToFeature(e) {
     map.fitBounds(e.target.getBounds());
 }
 
+// Parks layer with interactivity and popup
 var Park = L.geoJson(Park, {
     style: {
-       
-		color: "#32CD32",
-		weight: 3},
-    onEachFeature: function (feature, layer) {
-        layer.on('click', zoomToFeature);}
-		//you can also write:
-		//layer.on({click: zoomToFeature}); }
+        color: "#32CD32",  // light green
+        weight: 3
+    },
+    onEachFeature: function(feature, layer) {
+        // Popup with park name
+        if (feature.properties && feature.properties.name) {
+            layer.bindPopup("<b>Park:</b> " + feature.properties.name);
+        }
+        // Add event listeners
+        layer.on({
+            mouseover: highlightFeature,
+            mouseout: resetHighlight,
+            click: zoomToFeature
+        });
+    }
 });
-
-
-
-Park.addTo(map); 
+Park.addTo(map);
 
 // Add pharmacy point layer to the Map
-
-
-// Assuming your raw GeoJSON data object for pharmacies is named pharmacyData
+//setting the popup content with name and the opening hours
 
 var PharmacyIcon = L.icon({
 	iconUrl: 'css/images/Pharmacy.png',
@@ -134,8 +159,7 @@ var features = {
 	
 }
 
-//the legend uses the layer control with entries for the base maps and the layers we added
-//in case either base maps or features are not used in the layer control, the respective element in the properties is null
-
 L.control.layers(baseMaps, features, {position:'topleft'}).addTo(map);
+// the legend uses Leaflet's built-in control
+
 
