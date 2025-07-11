@@ -1,7 +1,7 @@
-// Using Leaflet for creating the map and adding controls for interacting with the map
+// Using Leaflet for creating the Healthcare Facilities  map for Salzburg and adding controls for interacting with the map
 
 //
-//--- Part 1: adding base maps ---
+//adding base maps 
 //
 
 //creating the map; defining the location in the center of the map (geographic coords) and the zoom level. These are properties of the leaflet map object
@@ -12,79 +12,51 @@ var map = L.map('map', {
 });
 
 
-//adding base map/s 
+//adding base maps 
 
-// add open street map as base layer
+// Here i have select the Cartocdn as a the base map for my map
 var osmap = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 	
+
 
 // for using the two base maps in the layer control, I defined a baseMaps variable
 var baseMaps = {
 	"Open Street Map": osmap
 }
 
-//
-//---- Part 2: Adding a scale bar
-//
-L.control.scale({position:'bottomright',imperial:false}).addTo(map);
 
-//
-//---- Part 3: adding GeoJSON line features 
-//
+// Adding a scale bar
 
-//---- Part 5: Adding GeoJSON features and interactivity
-//
+L.control.scale({position:'bottomleft',imperial:false}).addTo(map);
 
 
-// Add Park layer to the Map
+// Adding GeoJSON features and interactivity
 
-// Highlight function
-// Highlight function
-function highlightFeature(e) {
-    var layer = e.target;
-    layer.setStyle({
-        color: '#228B22',  // Darker green on hover
-        weight: 5,
-        fillOpacity: 0.7
-    });
+// Adding the daa on the dentists 
 
-    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
-        layer.bringToFront();
-    }
-}
+var DentistsIcon = L.icon({
+	iconUrl: 'css/images/Dentists.png',
+	iconSize: [22, 20]
+}); 
 
-// Reset highlight
-function resetHighlight(e) {
-    Park.resetStyle(e.target);
-}
-
-// Zoom on click
-function zoomToFeature(e) {
-    map.fitBounds(e.target.getBounds());
-}
-
-// Parks layer with interactivity and popup
-var Park = L.geoJson(Park, {
-    style: {
-        color: "#32CD32",  // light green
-        weight: 3
-    },
-    onEachFeature: function(feature, layer) {
-        // Popup with park name
-        if (feature.properties && feature.properties.name) {
-            layer.bindPopup("<b>Park:</b> " + feature.properties.name);
+var DentistsLayer = L.geoJson(Dentists, {
+	pointToLayer: function(feature, latlng) {
+		return L.marker(latlng, { icon: DentistsIcon });
+	},
+    // here i have select the name of the dentist and the opening Hours as the suitable attribute in the pop up content.
+	onEachFeature: function(feature, layer) {
+    if (feature.properties) {
+        var popupContent = "<b>Dentists:</b> " + (feature.properties.name || "No name") + "<br>";
+        if (feature.properties.opening_hours) {
+            popupContent += "<b>Opening Hours:</b> " + feature.properties.opening_hours;
         }
-        // Add event listeners
-        layer.on({
-            mouseover: highlightFeature,
-            mouseout: resetHighlight,
-            click: zoomToFeature
-        });
+        layer.bindPopup(popupContent);
     }
+}
 });
-Park.addTo(map);
+DentistsLayer.addTo(map);
 
 // Add pharmacy point layer to the Map
 //setting the popup content with name and the opening hours
@@ -110,27 +82,50 @@ var PharmacyLayer = L.geoJson(Pharmacy, {
 });
 PharmacyLayer.addTo(map);
 
-// Adding fitness center Data 
+// Adding data on Doctors (HausArzt)
 
-var fitnessIcon = L.icon({
-	iconUrl: 'css/images/fitness.png',
+
+var DoctorsIcon = L.icon({
+	iconUrl: 'css/images/Doctors.png',
 	iconSize: [22, 20]
 }); 
 
-var fitnessLayer = L.geoJson(fitness, {
+var DoctorsLayer = L.geoJson(Doctors, {
 	pointToLayer: function(feature, latlng) {
-		return L.marker(latlng, { icon: fitnessIcon });
+		return L.marker(latlng, { icon: DoctorsIcon });
 	},
+
+    	// Here we customize which attributes need to be shown in the pop up of the Doctors Layers. 
+        // Here i have select the name, helathcare speciality , opening hours website and the email
 	onEachFeature: function(feature, layer) {
-    var popupContent = "<b>Fitness:</b> " + (feature.properties?.name || "No name");
-		layer.bindPopup(popupContent);
-        }
-    
-    });
+		if (feature.properties) {
+			var popupContent = "<b>Doctor Name:</b> " + (feature.properties.name || "No name") + "<br>";
+			
+		
 
-fitnessLayer.addTo(map);
+			if (feature.properties["healthcare:speciality"]) {
+				popupContent += "<b>Specialty:</b> " + feature.properties["healthcare:speciality"] + "<br>";
+			}
+		
+			if (feature.properties.opening_hours) {
+				popupContent += "<b>Opening Hours:</b> " + feature.properties.opening_hours;
+			}
+			
+            if (feature.properties.email) {
+				popupContent += "<b>E mail:</b> " + feature.properties.email;
+			}
 
-// Adding Hospital Data 
+            if (feature.properties.website) {
+				popupContent += "<b>Web Site:</b> " + feature.properties.website;
+			}
+			layer.bindPopup(popupContent);
+		}
+	}
+});
+DoctorsLayer.addTo(map);
+
+
+// Adding Hospital Data and on the pop up it will display the name
 
 var hospitalsIcon = L.icon({
 	iconUrl: 'css/images/hospital.png',
@@ -142,24 +137,34 @@ var hospitalsLayer = L.geoJson(hospitals, {
 		return L.marker(latlng, { icon: hospitalsIcon });
 	},
 	onEachFeature: function(feature, layer) {
-    var popupContent = "<b>Hospital:</b> " + (feature.properties?.name || "No name");
+		var name = feature.properties?.name || "No name";
+		var popupContent = "<b>Hospital:</b> " + name;
 		layer.bindPopup(popupContent);
-        }
-    
-    });
 
+		
+		
+	}
+});
 hospitalsLayer.addTo(map);
 
-//the variable features lists layers that I want to control with the layer control
-var features = {
-	"Hospitals": hospitalsLayer,
-	"Pharmacy": PharmacyLayer,
-	"Parks": Park,
-	"Fitness Center": fitnessLayer,
-	
-}
+ 
+// Prepare icon HTML labels for overlay layers . Here i want to diplay the icon of the each item on the layer control.
+var iconHtmlDentists = '<img src="css/images/Dentists.png" style="width:20px; height:18px; vertical-align:middle; margin-right:6px;"> Dentists';
+var iconHtmlPharmacy = '<img src="css/images/Pharmacy.png" style="width:20px; height:18px; vertical-align:middle; margin-right:6px;"> Pharmacy';
+var iconHtmlDoctors = '<img src="css/images/Doctors.png" style="width:20px; height:18px; vertical-align:middle; margin-right:6px;"> Doctors';
+var iconHtmlHospitals = '<img src="css/images/hospital.png" style="width:20px; height:18px; vertical-align:middle; margin-right:6px;"> Hospitals';
 
-L.control.layers(baseMaps, features, {position:'topleft'}).addTo(map);
-// the legend uses Leaflet's built-in control
+// Define the overlay maps with icons in labels
+var overlayMaps = {};
+overlayMaps[iconHtmlHospitals] = hospitalsLayer;
+overlayMaps[iconHtmlPharmacy] = PharmacyLayer;
+overlayMaps[iconHtmlDoctors] = DoctorsLayer;
+overlayMaps[iconHtmlDentists] = DentistsLayer;
 
+// Add layer control with icons and always visible 
+L.control.layers(baseMaps, overlayMaps, {
+    position: 'topleft',
+    collapsed: false
+    //in order to view the layers at once inthe layer controlled " collapsed : false" function was used. 
+}).addTo(map);
 

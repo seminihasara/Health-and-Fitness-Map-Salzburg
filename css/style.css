@@ -1,17 +1,35 @@
 h1{
+	/* Adding color, font style to the main Heading*/
     position: fixed;
-    color: rgba(7, 0, 0, 0.788);
-    background-color: rgba(159,159,159,0.7);
-    margin-left: 30%;
+    color: #ffffff; ;
+     background-color: #003366; 
+	font-family: 'sans-serif';
+    font-size: 30px;
+    font-weight: 600;
+    margin-left: 20%;
     margin-top: 0%;
     z-index: 2;
-}
+	text-align: center;  
 
+	width: 70%;          
+    padding: 10px 20px;  
+    border-radius: 6px;  
+    box-sizing: border-box;  
+}
+.subtitle {
+	/* Adding color, font style to the Sub Heading*/
+    font-size: 16px;
+    font-weight: 700;     
+    font-style: italic;   
+    margin-top: 4px;
+    color: #FFFF00;
+    font-family: 'Roboto' ;
+}
 body{
 	width: 100%;
 	height: 100%;
 	margin: 5px;
-	font-family: "Helvetica Neue", Arial, Helveticam sans-serif;
+	font-family: " Helvetica ";
 }
 
 #map {
@@ -21,4 +39,52 @@ body{
 	overflow:hidden;
 	position:fixed;
 	border:1px #444 solid;
+}
+
+.leaflet-control-layers {
+    background-color: #03011a; 
+    font-size: 16px;
+    font-family:'sans-serif';
+    font-weight: 500;
+    padding: 17px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 200px; 
+    max-height: 600px; 
+
+}
+
+
+
+.leaflet-control-layers-expanded {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+
+/* to Make labels more readable */
+.leaflet-control-layers label {
+	display: block;
+	margin: 4px 0;
+}
+
+.leaflet-popup-content {
+    font-family: 'sans-senrif';
+    font-size: 16px;
+	background-color: rgb(192, 206, 216);
+	width: 70%; 
+}
+.leaflet-popup-content-wrapper {
+    max-width: 400px; 
+    background-color: rgb(30, 187, 153); 
+    border-radius: 6px;
+    padding: 6px;
+    font-family: 'sans-senrif';
+	border: none; 
+    box-shadow: none;
+}
+
+.leaflet-tooltip {
+    font-family: 'Georgia';
+    font-size: 14px;
 }
